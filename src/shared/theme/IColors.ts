@@ -1,11 +1,9 @@
 export interface IColors {
   text: {
-    primary: string,
-  },
-  navigator: {
-
-  },
+    primary: string;
+  };
+  navigator: {};
   background: {
-    background: string,
-  },
-};
+    background: string;
+  };
+}

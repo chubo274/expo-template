@@ -25,18 +25,6 @@ In the output, you'll find options to open the app in a
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
-
-When you're ready, run:
-
-add to scripts:
-"reset-project": "node ./scripts/reset-project.js",
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
@@ -50,3 +38,6 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## eslint:
+yarn add --dev @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks

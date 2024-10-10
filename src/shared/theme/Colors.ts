@@ -1,11 +1,9 @@
 export const Colors = {
   text: {
-    primary: '#11181C',
+    primary: "#11181C",
   },
-  navigator: {
-
-  },
+  navigator: {},
   background: {
-    background: '#ffffff',
+    background: "#ffffff",
   },
 };
