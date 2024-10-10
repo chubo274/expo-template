@@ -29,6 +29,8 @@ You can start developing by editing the files inside the **app** directory. This
 
 When you're ready, run:
 
+add to scripts:
+"reset-project": "node ./scripts/reset-project.js",
 ```bash
 npm run reset-project
 ```
