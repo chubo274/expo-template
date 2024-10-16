@@ -1,3 +1,4 @@
+import { ModeTheme } from "shared/constants/enum";
 import { LANGUAGES } from "src/localization";
 
 export const ZustandKeyPersist: (keyof ZustandModel)[] = ["Localization"];
@@ -7,4 +8,5 @@ export interface ZustandModel {
   name?: string;
   UserInfo?: { name: string; age: number };
   Localization?: LANGUAGES;
+  AppTheme?: ModeTheme;
 }
