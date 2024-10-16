@@ -1,6 +1,7 @@
 import { router, Stack, useSegments } from "expo-router";
 import { useEffect } from "react";
 import { I18nextProvider } from "react-i18next";
+import ThemeProvider from "shared/theme";
 import i18n from "src/localization";
 import { useGet, useSave } from "src/zustand";
 import { getLocal } from "src/zustand/asyncStoreFunc";
@@ -30,10 +31,12 @@ export default function RootLayout() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="auth" options={{ headerShown: false }} />
-      </Stack>
+      <ThemeProvider>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="auth" options={{ headerShown: false }} />
+        </Stack>
+      </ThemeProvider>
     </I18nextProvider>
   );
 }

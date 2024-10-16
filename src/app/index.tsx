@@ -1,10 +1,12 @@
 import { useTranslation } from "react-i18next";
 import { Text, TouchableOpacity, View } from "react-native";
+import { useThemeColor } from "shared/theme";
 import { useSave } from "src/zustand";
 
 const Index = () => {
   const { t } = useTranslation();
   const save = useSave();
+  const themeColor = useThemeColor();
 
   return (
     <View
@@ -21,6 +23,7 @@ const Index = () => {
         onPress={() => {
           save("UserInfo", { name: "123", age: 123 });
         }}
+        style={{ backgroundColor: themeColor.color.background.white }}
       >
         <Text>move to Home screen.</Text>
         <Text>{t("login")}</Text>
