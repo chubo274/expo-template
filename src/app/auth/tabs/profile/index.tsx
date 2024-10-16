@@ -1,11 +1,12 @@
-import { router } from "expo-router";
 import { useCallback } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { useSave } from "src/zustand";
 
 export default function Index() {
+  const save = useSave();
   const onLogout = useCallback(() => {
-    router.push({ pathname: "/unAuth" });
-  }, []);
+    save("UserInfo", undefined);
+  }, [save]);
 
   return (
     <View
