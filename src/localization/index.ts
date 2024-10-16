@@ -28,37 +28,6 @@ const renLanguage = (language?: LANGUAGES) => {
   }
 };
 
-export const configureLocalization = (
-  language?: LANGUAGES,
-  fallback = fallBackLanguage,
-) => {
-  StoreZustand.getState().save("Localization", renLanguage(language));
-  return i18n.use(initReactI18next).init({
-    compatibilityJSON: "v3",
-    lng: renLanguage(language),
-    fallbackLng: fallback,
-
-    resources: {
-      en: {
-        translation: en,
-      },
-      vi: {
-        translation: vi,
-      },
-    },
-
-    debug: false,
-
-    cache: {
-      enabled: true,
-    },
-
-    interpolation: {
-      escapeValue: false, // not needed for react as it does escape per default to prevent xss!
-    },
-  });
-};
-
 export const getString = (key: keyof iLocalization, params?: any) => {
   if (getI18n()) {
     return getI18n().t(key, params);
@@ -81,3 +50,28 @@ export const changeLanguage = (language?: LANGUAGES): Promise<string> => {
       });
   });
 };
+
+// initI18n
+const initI18n = async (language?: LANGUAGES, fallback = fallBackLanguage) => {
+  StoreZustand.getState().save("Localization", renLanguage(language));
+
+  i18n.use(initReactI18next).init({
+    compatibilityJSON: "v3",
+    resources: {
+      en: {
+        translation: en,
+      },
+      vi: {
+        translation: vi,
+      },
+    },
+    lng: renLanguage(language),
+    fallbackLng: "pt-BR",
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+};
+
+initI18n(LANGUAGES.ENGLISH);
+export default i18n;
