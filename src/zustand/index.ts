@@ -18,29 +18,31 @@ const StoreZustand: UseBoundStore<StoreApi<IRootState>> = create(
   (set, get) => ({
     state: {},
     save: (key, value) => {
-      if (ZustandKeyPersist.includes(key)) {
+      if (ZustandKeyPersist?.length > 0 && ZustandKeyPersist?.includes(key)) {
         setLocal(key, value).then(() => {
           return set((rootState: IRootState) => ({
             state: {
-              ...rootState.state,
+              ...rootState?.state,
               [key]: value,
             },
           }));
         });
       }
 
-      return set((rootState: any) => ({
-        state: {
-          ...rootState.state,
-          [key]: value,
-        },
-      }));
+      return set((rootState: any) => {
+        return {
+          state: {
+            ...rootState?.state,
+            [key]: value,
+          },
+        };
+      });
     },
     get: (key) => get()?.state?.[key],
   }),
 );
 
 export const useSave = () => StoreZustand((rootState) => rootState?.save);
-export const useGet = (key: keyof ZustandModel) =>
+export const useGet = <K extends keyof ZustandModel>(key: K) =>
   StoreZustand((rootState) => rootState?.state?.[key]);
 export default StoreZustand;
