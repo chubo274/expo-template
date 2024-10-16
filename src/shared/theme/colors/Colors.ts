@@ -8,6 +8,6 @@ export const Colors = {
   },
   navigator: {},
   background: {
-    background: "#ffffff",
+    white: "#ffffff",
   },
 };

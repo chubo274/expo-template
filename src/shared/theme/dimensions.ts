@@ -42,7 +42,7 @@ export const isIphoneDynamicIsland = () => {
   );
 };
 
-const dimensions = {
+const space = {
   deviceHeight: height,
   deviceWidth: width,
   makeResponsiveSize: responsiveSize,
@@ -88,4 +88,4 @@ const fontSize = {
   p48: responsiveSize(48),
 };
 
-export default { dimensions, fontSize };
+export default { space, fontSize };

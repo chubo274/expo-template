@@ -8,6 +8,6 @@ export interface IColors {
   };
   navigator: {};
   background: {
-    background: string;
+    white: string;
   };
 }

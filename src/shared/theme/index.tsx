@@ -2,8 +2,8 @@ import React, { useCallback, useContext, useMemo } from "react";
 // import { setLocal } from 'shared/helpers/function';
 import { ModeTheme } from "shared/constants/enum";
 import { useGet, useSave } from "src/zustand";
-import { setLocal } from "src/zustand/asyncStoreFunc";
 import { Colors } from "./colors/Colors";
+import { DarkColors } from "./colors/DarkColors";
 import { IColors } from "./colors/IColors";
 
 export interface ITheme {
@@ -15,7 +15,7 @@ const ThemeContext = React.createContext<ITheme>({
   changeTheme: (value?: ModeTheme) => null,
 });
 
-export const useAppTheme = () => useContext(ThemeContext);
+export const useThemeColor = () => useContext(ThemeContext);
 
 const ThemeProvider = ({ children }: any) => {
   const save = useSave();
@@ -26,7 +26,6 @@ const ThemeProvider = ({ children }: any) => {
       const nextValue = value ?? ModeTheme.Default;
       if (nextValue != themeColor) {
         save("AppTheme", nextValue);
-        setLocal("AppTheme", nextValue);
       }
     },
     [themeColor, save],
@@ -34,6 +33,9 @@ const ThemeProvider = ({ children }: any) => {
 
   const sourceColor = useMemo(() => {
     switch (themeColor) {
+      case 2:
+        return DarkColors;
+      case 1:
       default:
         return Colors;
     }
