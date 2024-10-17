@@ -6,7 +6,7 @@ import i18n from "src/localization";
 import { useGet, useSave } from "src/zustand";
 import { getLocal } from "src/zustand/asyncStoreFunc";
 import { ZustandKeyPersist } from "src/zustand/keyZustand";
-
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 export default function RootLayout() {
   const save = useSave();
   const userInfo = useGet("UserInfo");
@@ -32,10 +32,12 @@ export default function RootLayout() {
   return (
     <I18nextProvider i18n={i18n}>
       <ThemeProvider>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="auth" options={{ headerShown: false }} />
-        </Stack>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen name="auth" options={{ headerShown: false }} />
+          </Stack>
+        </GestureHandlerRootView>
       </ThemeProvider>
     </I18nextProvider>
   );
