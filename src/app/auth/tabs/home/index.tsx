@@ -4,6 +4,7 @@ import { useAppRouter } from "src/navigation";
 
 const Index = () => {
   const appRouter = useAppRouter();
+
   const onPress = useCallback(() => {
     appRouter.navigate("/auth/notification", {
       id: "1",
